@@ -6,19 +6,21 @@ import com.example.profi.repo.ParticipantRepository;
 import com.example.profi.repo.PrizeRepository;
 import com.example.profi.repo.PromotionsRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-public class PromotionService {
+@Service
+public class PromotionServiceService implements PromotionServiceInterface, PrizeServiceInterface, ParticipantServiceInterface {
 
     private final PromotionsRepository promotionsRepository;
     private final ParticipantRepository participantRepository;
     private final PrizeRepository prizeRepository;
 
-    public PromotionService(PromotionsRepository promotionsRepository, ParticipantRepository participantRepository, PrizeRepository prizeRepository) {
+    public PromotionServiceService(PromotionsRepository promotionsRepository, ParticipantRepository participantRepository, PrizeRepository prizeRepository) {
         this.promotionsRepository = promotionsRepository;
         this.participantRepository = participantRepository;
         this.prizeRepository = prizeRepository;

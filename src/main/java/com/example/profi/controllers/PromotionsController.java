@@ -5,7 +5,7 @@ import com.example.profi.model.*;
 import com.example.profi.repo.ParticipantRepository;
 import com.example.profi.repo.PrizeRepository;
 import com.example.profi.repo.PromotionsRepository;
-import com.example.profi.services.PromotionService;
+import com.example.profi.services.PromotionServiceService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,13 +14,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/promo")
 public class PromotionsController {
 
-    private PromotionService promotionService;
-    private PromotionsRepository promotionsRepository;
-    public PromotionsController(PromotionsRepository promotionsRepository, ParticipantRepository participantRepository, PrizeRepository prizeRepository) {
-        this.promotionsRepository = promotionsRepository;
-        this.promotionService = new PromotionService(promotionsRepository, participantRepository, prizeRepository);
-    }
+    private PromotionServiceService promotionService;
 
+    public PromotionsController(PromotionsRepository promotionsRepository, ParticipantRepository participantRepository, PrizeRepository prizeRepository) {
+        this.promotionService = new PromotionServiceService(promotionsRepository, participantRepository, prizeRepository);
+    }
 
     @PostMapping
     private ResponseEntity<Long> addPromotion(@RequestBody ShortInfAboutPromotion newPromotion) throws RequestException {
